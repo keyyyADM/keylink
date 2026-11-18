@@ -546,6 +546,7 @@
       <div class="mod-count" id="modCount">6 mods</div>
     </div>
 
+    <!-- LISTA DE MODS COM OS ATRIBUTOS CORRIGIDOS PARA O FILTRO FUNCIONAR -->
     <div class="mod-list" id="modList">
       <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
         <div class="mod-info">
@@ -606,13 +607,13 @@
       <!-- Produto 1: LEGO Dragão Ender -->
       <a href="https://s.shopee.com.br/7AfEO9lxx3" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <img src="URL_FOTO_DRAGAO.png" alt="LEGO Dragão Ender" />
+          <img src="URL_FOTO_DRAGAO.webp" alt="LEGO Dragão Ender" />
         </div>
         <div class="store-info">
           <span class="store-badge">Oficial Shopee</span>
-          <div class="store-title">LEGO Minecraft O Dragão Ender[cite: 1]</div>
+          <div class="store-title">LEGO Minecraft O Dragão Ender</div>
           <div class="store-footer-row">
-            <div class="store-price">R$ 445,74[cite: 1]</div>
+            <div class="store-price">R$ 445,74</div>
             <div class="store-btn">Ver Oferta ➔</div>
           </div>
         </div>
@@ -621,13 +622,13 @@
       <!-- Produto 2: Blocos de Montar -->
       <a href="https://s.shopee.com.br/2BGYQu1nuX" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <img src="URL_FOTO_BLOCOS.png" alt="Minecraft Blocos de Montar" />
+          <img src="URL_FOTO_BLOCOS.webp" alt="Minecraft Blocos de Montar" />
         </div>
         <div class="store-info">
-          <span class="store-badge">Pronta Entrega[cite: 2]</span>
-          <div class="store-title">Minecraft Blocos De Montar Brinquedo[cite: 2]</div>
+          <span class="store-badge">Pronta Entrega</span>
+          <div class="store-title">Minecraft Blocos De Montar Brinquedo</div>
           <div class="store-footer-row">
-            <div class="store-price">R$ 20,90[cite: 2]</div>
+            <div class="store-price">R$ 20,90</div>
             <div class="store-btn">Ver Oferta ➔</div>
           </div>
         </div>
@@ -636,28 +637,28 @@
       <!-- Produto 3: Copo Térmico 1200ml -->
       <a href="https://s.shopee.com.br/4qHJchVNJA" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <img src="URL_FOTO_COPO.png" alt="Copo Caneca Térmica 1200ml" />
+          <img src="URL_FOTO_COPO.webp" alt="Copo Caneca Térmica 1200ml" />
         </div>
         <div class="store-info">
-          <span class="store-badge">Mais Vendido[cite: 3]</span>
-          <div class="store-title">Copo Caneca Térmica 1200 ML com Canudo[cite: 3]</div>
+          <span class="store-badge">Mais Vendido</span>
+          <div class="store-title">Copo Caneca Térmica 1200 ML com Canudo</div>
           <div class="store-footer-row">
-            <div class="store-price">R$ 54,89[cite: 3]</div>
+            <div class="store-price">R$ 54,89</div>
             <div class="store-btn">Ver Oferta ➔</div>
           </div>
         </div>
       </a>
 
-      <!-- Produto 4: Cascata 400 Leds -->
+      <!-- Produto 4: Cascata 400 Leds (Link real já inserido!) -->
       <a href="https://s.shopee.com.br/2LZye9ZLiH" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <img src="URL_FOTO_CASCATA.png" alt="Cascata 400 Leds" />
+          <img src="https://down-tx-br.img.susercontent.com/br-11134207-820ls-mtdy9yqpiltv31.webp" alt="Cascata 400 Leds" />
         </div>
         <div class="store-info">
-          <span class="store-badge">36% OFF[cite: 4]</span>
-          <div class="store-title">Cascata 400 Led's 10 Metros Fixo ou 8 Funções[cite: 4]</div>
+          <span class="store-badge">36% OFF</span>
+          <div class="store-title">Cascata 400 Led's 10 Metros Fixo ou 8 Funções</div>
           <div class="store-footer-row">
-            <div class="store-price">R$ 63,99[cite: 4]</div>
+            <div class="store-price">R$ 63,99</div>
             <div class="store-btn">Ver Oferta ➔</div>
           </div>
         </div>
@@ -700,16 +701,4 @@
       modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
     }
 
-    searchInput.addEventListener('input', filterMods);
-
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        filterPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        currentFilter = pill.getAttribute('data-filter');
-        filterMods();
-      });
-    });
-  </script>
-</body>
-</html>
+    searchInput.addEventListener('input
