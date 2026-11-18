@@ -355,7 +355,7 @@
       border: 1px solid rgba(0, 255, 102, 0.2);
     }
 
-    /* VITRINE DE PRODUTOS SHOPEE (ESTILO LIMPO E PREMIUM) */
+    /* VITRINE DE PRODUTOS SHOPEE COM FOTO DOS ITENS */
     .store-grid {
       display: flex;
       flex-direction: column;
@@ -383,25 +383,31 @@
       box-shadow: 0 6px 25px rgba(0, 255, 102, 0.25);
     }
 
-    /* Caixa da Imagem Transparente / Sem Fundo */
+    /* Caixa da Imagem do Produto (Sem fundo / Limpa) */
     .store-img-box {
-      width: 84px;
-      height: 84px;
+      width: 88px;
+      height: 88px;
       flex-shrink: 0;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.35);
       border: 1px solid var(--border);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: 6px;
+      overflow: hidden;
     }
 
     .store-img-box img {
-      max-width: 100%;
-      max-height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       filter: drop-shadow(0 4px 8px rgba(0, 255, 102, 0.2));
+      transition: transform 0.3s ease;
+    }
+
+    .store-card:hover .store-img-box img {
+      transform: scale(1.08);
     }
 
     .store-info {
@@ -590,7 +596,7 @@
       </a>
     </div>
 
-    <!-- SEÇÃO DE VENDAS / AFILIADOS SHOPEE -->
+    <!-- SEÇÃO DE VENDAS / AFILIADOS SHOPEE COM FOTOS DOS PRODUTOS -->
     <div class="section-header">
       <div class="section-title">📦 Colecionáveis & Brinquedos Minecraft</div>
       <div class="mod-count">Shopee</div>
@@ -600,18 +606,14 @@
       <!-- Produto 1: LEGO Dragão Ender -->
       <a href="https://s.shopee.com.br/7AfEO9lxx3" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <!-- Substitua o src abaixo pelo link direto da imagem PNG sem fundo do produto se desejar -->
-          <svg viewBox="0 0 24 24" width="40" height="40" stroke="#00ff66" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-          </svg>
+          <!-- Cole o link da foto PNG sem fundo do Dragão no src abaixo -->
+          <img src="URL_DA_FOTO_DO_DRAGAO_AQUI.png" alt="LEGO Dragão Ender" />
         </div>
         <div class="store-info">
           <span class="store-badge">Oficial Shopee</span>
-          <div class="store-title">LEGO Minecraft O Dragão Ender</div>
+          <div class="store-title">LEGO Minecraft O Dragão Ender[cite: 1]</div>
           <div class="store-footer-row">
-            <div class="store-price">R$ 445,74</div>
+            <div class="store-price">R$ 445,74[cite: 1]</div>
             <div class="store-btn">Ver Oferta ➔</div>
           </div>
         </div>
@@ -620,17 +622,14 @@
       <!-- Produto 2: Blocos de Montar -->
       <a href="https://s.shopee.com.br/2BGYQu1nuX" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <!-- Substitua o src abaixo pelo link direto da imagem PNG sem fundo do produto se desejar -->
-          <svg viewBox="0 0 24 24" width="40" height="40" stroke="#33ff88" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-          </svg>
+          <!-- Cole o link da foto PNG sem fundo dos Blocos no src abaixo -->
+          <img src="URL_DA_FOTO_DOS_BLOCOS_AQUI.png" alt="Minecraft Blocos de Montar" />
         </div>
         <div class="store-info">
-          <span class="store-badge">Pronta Entrega</span>
-          <div class="store-title">Minecraft Blocos De Montar Brinquedo</div>
+          <span class="store-badge">Pronta Entrega[cite: 2]</span>
+          <div class="store-title">Minecraft Blocos De Montar Brinquedo[cite: 2]</div>
           <div class="store-footer-row">
-            <div class="store-price">R$ 20,90</div>
+            <div class="store-price">R$ 20,90[cite: 2]</div>
             <div class="store-btn">Ver Oferta ➔</div>
           </div>
         </div>
