@@ -211,66 +211,6 @@
       box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
     }
 
-    .search-filter-wrapper {
-      margin-bottom: 16px;
-    }
-
-    .search-box {
-      position: relative;
-      margin-bottom: 12px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background-color: var(--card);
-      backdrop-filter: blur(8px);
-      color: var(--text);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .search-box input:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.25);
-    }
-
-    .filter-pills {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
-
-    .filter-pills::-webkit-scrollbar {
-      display: none;
-    }
-
-    .pill {
-      background-color: var(--card);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-
-    .pill:hover, .pill.active {
-      background-color: rgba(0, 255, 102, 0.15);
-      border-color: var(--green);
-      color: var(--green);
-      box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
-    }
-
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -510,26 +450,13 @@
       </div>
     </div>
 
-    <div class="search-filter-wrapper">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Pesquisar mod por nome ou função..." />
-      </div>
-      <div class="filter-pills" id="filterPills">
-        <button class="pill active" data-filter="all">Todos</button>
-        <button class="pill" data-filter="otimização">Otimização</button>
-        <button class="pill" data-filter="construção">Construção</button>
-        <button class="pill" data-filter="visuais">Visuais</button>
-        <button class="pill" data-filter="utilidade">Utilidade</button>
-      </div>
-    </div>
-
     <div class="section-header">
       <div class="section-title">Lista de Mods em Destaque</div>
-      <div class="mod-count" id="modCount">6 mods</div>
+      <div class="mod-count">6 mods</div>
     </div>
 
-    <div class="mod-list" id="modList">
-      <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+    <div class="mod-list">
+      <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card">
         <div class="mod-info">
           <h3>Sodium</h3>
           <p>Otimização extrema de FPS e renderização</p>
@@ -537,7 +464,7 @@
         <span class="tag">Otimização</span>
       </a>
 
-      <a href="https://modrinth.com/mod/sodium-extra" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+      <a href="https://modrinth.com/mod/sodium-extra" target="_blank" rel="noopener" class="mod-card">
         <div class="mod-info">
           <h3>Sodium Extra</h3>
           <p>Opções extras de configuração gráfica para o Sodium</p>
@@ -545,7 +472,7 @@
         <span class="tag">Otimização</span>
       </a>
 
-      <a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+      <a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener" class="mod-card">
         <div class="mod-info">
           <h3>Lithium</h3>
           <p>Melhora física, chunks e desempenho geral</p>
@@ -553,7 +480,7 @@
         <span class="tag">Otimização</span>
       </a>
 
-      <a href="https://modrinth.com/mod/immediatelyfast" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+      <a href="https://modrinth.com/mod/immediatelyfast" target="_blank" rel="noopener" class="mod-card">
         <div class="mod-info">
           <h3>ImmediatelyFast</h3>
           <p>Otimiza a renderização de entidades, blocos e UI</p>
@@ -561,7 +488,7 @@
         <span class="tag">Otimização</span>
       </a>
 
-      <a href="https://modrinth.com/mod/entityculling" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+      <a href="https://modrinth.com/mod/entityculling" target="_blank" rel="noopener" class="mod-card">
         <div class="mod-info">
           <h3>Entity Culling</h3>
           <p>Não renderiza entidades escondidas atrás de paredes</p>
@@ -569,7 +496,7 @@
         <span class="tag">Otimização</span>
       </a>
 
-      <a href="https://modrinth.com/mod/ferritecore" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+      <a href="https://modrinth.com/mod/ferritecore" target="_blank" rel="noopener" class="mod-card">
         <div class="mod-info">
           <h3>FerriteCore</h3>
           <p>Reduz drasticamente o consumo de memória RAM</p>
@@ -599,10 +526,10 @@
         </div>
       </a>
 
-      <!-- 2. Minecraft Blocos de Montar -->
+      <!-- 2. Minecraft Blocos de Montar (Com foto do Copo invertida corretamente) -->
       <a href="https://s.shopee.com.br/2BGYQu1nuX" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <img src="https://down-tx-br.img.susercontent.com/br-11134207-820lh-mujbb092sete37.webp" alt="Minecraft Blocos de Montar" />
+          <img src="https://down-tx-br.img.susercontent.com/br-11134207-7r98o-m8e3zb9mp9tddf.webp" alt="Minecraft Blocos de Montar" />
         </div>
         <div class="store-info">
           <span class="store-badge">Pronta Entrega</span>
@@ -614,10 +541,10 @@
         </div>
       </a>
 
-      <!-- 3. Copo Térmico 1200ml -->
+      <!-- 3. Copo Térmico 1200ml (Com foto dos Blocos invertida corretamente) -->
       <a href="https://s.shopee.com.br/4qHJchVNJA" target="_blank" rel="noopener" class="store-card">
         <div class="store-img-box">
-          <img src="https://down-tx-br.img.susercontent.com/br-11134207-7r98o-m8e3zb9mp9tddf.webp" alt="Copo Garrafa Térmica" />
+          <img src="https://down-tx-br.img.susercontent.com/br-11134207-820lh-mujbb092sete37.webp" alt="Copo Garrafa Térmica" />
         </div>
         <div class="store-info">
           <span class="store-badge">Mais Vendido</span>
@@ -649,48 +576,5 @@
       Keycraft • Todos os direitos reservados
     </footer>
   </div>
-
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    const modCards = document.querySelectorAll('.mod-card');
-    const filterPills = document.querySelectorAll('.pill');
-    const modCount = document.getElementById('modCount');
-
-    let currentFilter = 'all';
-
-    function filterMods() {
-      const term = searchInput.value.toLowerCase();
-      let visibleCount = 0;
-
-      modCards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const desc = card.querySelector('p').textContent.toLowerCase();
-        const category = card.getAttribute('data-category');
-
-        const matchesSearch = title.includes(term) || desc.includes(term);
-        const matchesCategory = currentFilter === 'all' || category === currentFilter;
-
-        if (matchesSearch && matchesCategory) {
-          card.style.display = 'flex';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
-    }
-
-    searchInput.addEventListener('input', filterMods);
-
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        filterPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        currentFilter = pill.getAttribute('data-filter');
-        filterMods();
-      });
-    });
-  </script>
 </body>
 </html>
