@@ -701,4 +701,16 @@
       modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
     }
 
-    searchInput.addEventListener('input
+    searchInput.addEventListener('input', filterMods);
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentFilter = pill.getAttribute('data-filter');
+        filterMods();
+      });
+    });
+  </script>
+</body>
+</html>
