@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Keycraft • Mods Links</title>
+  <title>Keycraft • Mods & Loja</title>
   <style>
     :root {
       --bg: #040905;
@@ -102,7 +102,7 @@
       margin-bottom: 28px;
     }
 
-    /* Ícone em Bloco 3D de Grama do Minecraft (Zero dependência externa, nunca quebra) */
+    /* Ícone em Bloco 3D de Grama do Minecraft */
     .avatar-container {
       width: 96px;
       height: 96px;
@@ -289,6 +289,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
+      margin-top: 28px;
     }
 
     .section-title {
@@ -359,6 +360,87 @@
       border: 1px solid rgba(0, 255, 102, 0.2);
     }
 
+    /* Vitrine Shopee Afiliados */
+    .store-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .store-card {
+      background: linear-gradient(135deg, rgba(12, 28, 16, 0.9), rgba(6, 14, 8, 0.95));
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+      box-shadow: 0 6px 25px rgba(0, 255, 102, 0.25);
+    }
+
+    .store-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .store-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .store-badge {
+      background: linear-gradient(135deg, #ff5500, #ff8800);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .store-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 10px;
+    }
+
+    .store-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--green-light);
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+    }
+
+    .store-btn {
+      background-color: var(--green);
+      color: #030a03;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+
+    .store-card:hover .store-btn {
+      background-color: var(--green-light);
+      box-shadow: 0 0 12px var(--green-glow-strong);
+    }
+
     .empty-msg {
       text-align: center;
       color: var(--muted);
@@ -381,11 +463,8 @@
     <div class="mc-stars"></div>
     <div class="mc-clouds"></div>
     <svg class="mc-terrain" viewBox="0 0 1200 220" preserveAspectRatio="none">
-      <!-- Montanhas ao fundo -->
       <polygon points="0,220 0,120 120,120 120,80 280,80 280,140 450,140 450,60 640,60 640,110 820,110 820,50 1000,50 1000,130 1200,130 1200,220" fill="#091f10" />
-      <!-- Colinas intermediárias -->
       <polygon points="0,220 0,150 180,150 180,110 380,110 380,165 560,165 560,100 760,100 760,155 960,155 960,115 1200,115 1200,220" fill="#0d2e17" />
-      <!-- Camada de grama pixelada na base -->
       <polygon points="0,220 0,180 240,180 240,160 520,160 520,185 880,185 880,165 1200,165 1200,220" fill="#124020" />
       <rect x="0" y="180" width="240" height="8" fill="#00ff66" opacity="0.25" />
       <rect x="240" y="160" width="280" height="8" fill="#00ff66" opacity="0.25" />
@@ -398,14 +477,10 @@
     <header>
       <div class="avatar-container">
         <div class="avatar-inner">
-          <!-- Bloco 3D de Grama do Minecraft em SVG (nunca falha ou corrompe) -->
           <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-            <!-- Topo de grama -->
             <polygon points="32,6 58,20 32,34 6,20" fill="#33ff88" />
-            <!-- Lado esquerdo (terra + borda de grama) -->
             <polygon points="6,20 32,34 32,58 6,44" fill="#3b2618" />
             <polygon points="6,20 32,34 32,41 24,37 24,40 16,36 16,32 6,27" fill="#00cc55" />
-            <!-- Lado direito (terra sombreada + borda de grama) -->
             <polygon points="58,20 32,34 32,58 58,44" fill="#291a10" />
             <polygon points="58,20 32,34 32,41 40,37 40,39 48,35 48,31 58,26" fill="#009940" />
           </svg>
@@ -413,7 +488,7 @@
       </div>
       <h1>Key</h1>
       <div class="handle">@Keyyycraft</div>
-      <p>Tudo sobre esses Blocos! Links diretos do Modrinth</p>
+      <p>Tudo sobre esses Blocos! Links diretos do Modrinth & Ofertas</p>
     </header>
 
     <div class="actions">
@@ -436,6 +511,7 @@
       </div>
     </div>
 
+    <!-- Pesquisa e Filtros de Mods -->
     <div class="search-filter-wrapper">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="Pesquisar mod por nome ou função..." />
@@ -451,11 +527,10 @@
 
     <div class="section-header">
       <div class="section-title">Lista de Mods em Destaque</div>
-      <div class="mod-count" id="modCount">17 mods</div>
+      <div class="mod-count" id="modCount">6 mods</div>
     </div>
 
     <div class="mod-list" id="modList">
-      <!-- OTIMIZAÇÃO -->
       <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
         <div class="mod-info">
           <h3>Sodium</h3>
@@ -503,6 +578,87 @@
         </div>
         <span class="tag">Otimização</span>
       </a>
+    </div>
 
-      <!-- CONSTRUÇÃO & DECORAÇÃO -->
-      <a href="https://modrinth.com/mod/axiom" target="_blank" rel="noopener" class="mod-card" data
+    <!-- SEÇÃO DE AFILIADOS / PRODUTOS SHOPEE -->
+    <div class="section-header">
+      <div class="section-title">📦 Produtos & Colecionáveis Minecraft</div>
+      <div class="mod-count">Shopee</div>
+    </div>
+
+    <div class="store-grid">
+      <!-- Produto 1: Dragão Ender -->
+      <a href="https://s.shopee.com.br/7AfEO9lxx3" target="_blank" rel="noopener" class="store-card">
+        <div class="store-card-header">
+          <div class="store-title">LEGO Minecraft O Dragão Ender</div>
+          <span class="store-badge">Oficial</span>
+        </div>
+        <div class="store-footer">
+          <div class="store-price">R$ 445,74</div>
+          <div class="store-btn">Ver na Shopee ➔</div>
+        </div>
+      </a>
+
+      <!-- Produto 2: Blocos de Montar -->
+      <a href="https://s.shopee.com.br/2BGYQu1nuX" target="_blank" rel="noopener" class="store-card">
+        <div class="store-card-header">
+          <div class="store-title">Minecraft Blocos De Montar Brinquedo</div>
+          <span class="store-badge">Pronta Entrega</span>
+        </div>
+        <div class="store-footer">
+          <div class="store-price">R$ 20,90</div>
+          <div class="store-btn">Ver na Shopee ➔</div>
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      Keycraft • Todos os direitos reservados
+    </footer>
+  </div>
+
+  <script>
+    // Filtro interativo para os mods
+    const searchInput = document.getElementById('searchInput');
+    const modCards = document.querySelectorAll('.mod-card');
+    const filterPills = document.querySelectorAll('.pill');
+    const modCount = document.getElementById('modCount');
+
+    let currentFilter = 'all';
+
+    function filterMods() {
+      const term = searchInput.value.toLowerCase();
+      let visibleCount = 0;
+
+      modCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        const category = card.getAttribute('data-category');
+
+        const matchesSearch = title.includes(term) || desc.includes(term);
+        const matchesCategory = currentFilter === 'all' || category === currentFilter;
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
+    }
+
+    searchInput.addEventListener('input', filterMods);
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentFilter = pill.getAttribute('data-filter');
+        filterMods();
+      });
+    });
+  </script>
+</body>
+</html>
