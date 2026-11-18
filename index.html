@@ -1,1055 +1,538 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
-<meta charset="UTF-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>Keycraft • Mods Links</title>
-
-<style>
-
-:root {
-
---bg: #030703;
-
---card: #0a120a;
-
---card-hover: #101c10;
-
---border: #162e16;
-
---text: #f3f4f6;
-
---muted: #9ca3af;
-
-
-/* Cores Verdes Dinâmicas e Vibrantes */
-
---green: #00ff66;
-
---green-light: #33ff88;
-
---green-dark: #008833;
-
---green-glow: rgba(0, 255, 102, 0.35);
-
---green-glow-strong: rgba(0, 255, 102, 0.6);
-
-}
-
-
-
-*, *::before, *::after {
-
-box-sizing: border-box;
-
-margin: 0;
-
-padding: 0;
-
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-}
-
-
-
-body {
-
-background-color: var(--bg);
-
-background-image:
-
-radial-gradient(circle at 50% -20%, rgba(0, 255, 102, 0.2) 0%, transparent 60%),
-
-radial-gradient(circle at 80% 90%, rgba(0, 136, 51, 0.1) 0%, transparent 50%);
-
-color: var(--text);
-
-display: flex;
-
-justify-content: center;
-
-padding: 36px 16px 48px;
-
-min-height: 100vh;
-
-}
-
-
-
-.container {
-
-width: 100%;
-
-max-width: 520px;
-
-}
-
-
-
-header {
-
-text-align: center;
-
-margin-bottom: 28px;
-
-}
-
-
-
-.avatar-container {
-
-width: 96px;
-
-height: 96px;
-
-margin: 0 auto 14px;
-
-border-radius: 50%;
-
-background: linear-gradient(135deg, var(--green), var(--green-dark));
-
-padding: 3px;
-
-box-shadow: 0 0 32px var(--green-glow);
-
-animation: pulseGlow 3s infinite alternate;
-
-}
-
-
-
-@keyframes pulseGlow {
-
-0% { box-shadow: 0 0 20px rgba(0, 255, 102, 0.2); }
-
-100% { box-shadow: 0 0 38px var(--green-glow-strong); }
-
-}
-
-
-
-.avatar {
-
-width: 100%;
-
-height: 100%;
-
-border-radius: 50%;
-
-object-fit: cover;
-
-background-color: #0d140d;
-
-}
-
-
-
-header h1 {
-
-font-size: 1.8rem;
-
-font-weight: 800;
-
-margin-bottom: 4px;
-
-letter-spacing: -0.02em;
-
-background: linear-gradient(90deg, #fff, var(--green-light));
-
--webkit-background-clip: text;
-
--webkit-text-fill-color: transparent;
-
-}
-
-
-
-header .handle {
-
-color: var(--green);
-
-font-size: 0.88rem;
-
-font-weight: 700;
-
-margin-bottom: 6px;
-
-text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
-
-}
-
-
-
-header p {
-
-color: var(--muted);
-
-font-size: 0.9rem;
-
-}
-
-
-
-.actions {
-
-display: flex;
-
-flex-direction: column;
-
-gap: 12px;
-
-margin-bottom: 24px;
-
-}
-
-
-
-.btn-primary {
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-gap: 10px;
-
-text-decoration: none;
-
-padding: 15px 18px;
-
-border-radius: 12px;
-
-font-weight: 700;
-
-font-size: 0.96rem;
-
-transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-
-}
-
-
-
-.btn-primary:hover {
-
-transform: translateY(-2px);
-
-}
-
-
-
-.btn-pix {
-
-background: linear-gradient(135deg, var(--green), var(--green-dark));
-
-color: #030a03;
-
-box-shadow: 0 4px 24px var(--green-glow);
-
-font-weight: 800;
-
-}
-
-
-
-.btn-pix:hover {
-
-background: linear-gradient(135deg, var(--green-light), var(--green));
-
-box-shadow: 0 6px 30px var(--green-glow-strong);
-
-}
-
-
-
-.btn-video {
-
-background-color: var(--card);
-
-color: var(--text);
-
-border: 1px solid var(--border);
-
-}
-
-
-
-.btn-video:hover {
-
-border-color: var(--green);
-
-background-color: var(--card-hover);
-
-box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
-
-}
-
-
-
-.search-filter-wrapper {
-
-margin-bottom: 16px;
-
-}
-
-
-
-.search-box {
-
-position: relative;
-
-margin-bottom: 12px;
-
-}
-
-
-
-.search-box input {
-
-width: 100%;
-
-padding: 14px 18px;
-
-border-radius: 12px;
-
-border: 1px solid var(--border);
-
-background-color: var(--card);
-
-color: var(--text);
-
-font-size: 0.95rem;
-
-outline: none;
-
-transition: border-color 0.2s, box-shadow 0.2s;
-
-}
-
-
-
-.search-box input:focus {
-
-border-color: var(--green);
-
-box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.25);
-
-}
-
-
-
-/* Filtros rápidos */
-
-.filter-pills {
-
-display: flex;
-
-gap: 8px;
-
-overflow-x: auto;
-
-padding-bottom: 4px;
-
-scrollbar-width: none;
-
-}
-
-
-
-.filter-pills::-webkit-scrollbar {
-
-display: none;
-
-}
-
-
-
-.pill {
-
-background-color: var(--card);
-
-border: 1px solid var(--border);
-
-color: var(--muted);
-
-padding: 6px 14px;
-
-border-radius: 20px;
-
-font-size: 0.8rem;
-
-font-weight: 600;
-
-cursor: pointer;
-
-white-space: nowrap;
-
-transition: all 0.2s ease;
-
-}
-
-
-
-.pill:hover, .pill.active {
-
-background-color: rgba(0, 255, 102, 0.15);
-
-border-color: var(--green);
-
-color: var(--green);
-
-box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
-
-}
-
-
-
-.section-header {
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-margin-bottom: 12px;
-
-}
-
-
-
-.section-title {
-
-font-size: 0.78rem;
-
-text-transform: uppercase;
-
-letter-spacing: 0.08em;
-
-color: var(--muted);
-
-font-weight: 600;
-
-}
-
-
-
-.mod-count {
-
-font-size: 0.75rem;
-
-color: var(--muted);
-
-}
-
-
-
-.mod-list {
-
-display: flex;
-
-flex-direction: column;
-
-gap: 10px;
-
-}
-
-
-
-.mod-card {
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-background-color: var(--card);
-
-border: 1px solid var(--border);
-
-border-radius: 12px;
-
-padding: 15px 18px;
-
-text-decoration: none;
-
-color: var(--text);
-
-transition: background-color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-
-}
-
-
-
-.mod-card:hover {
-
-background-color: var(--card-hover);
-
-border-color: var(--green);
-
-transform: translateX(4px);
-
-box-shadow: 0 4px 20px rgba(0, 255, 102, 0.15);
-
-}
-
-
-
-.mod-info h3 {
-
-font-size: 0.98rem;
-
-font-weight: 600;
-
-margin-bottom: 3px;
-
-transition: color 0.2s;
-
-}
-
-
-
-.mod-card:hover .mod-info h3 {
-
-color: var(--green-light);
-
-}
-
-
-
-.mod-info p {
-
-font-size: 0.82rem;
-
-color: var(--muted);
-
-}
-
-
-
-.tag {
-
-font-size: 0.72rem;
-
-font-weight: 700;
-
-padding: 5px 9px;
-
-border-radius: 6px;
-
-background-color: rgba(0, 255, 102, 0.15);
-
-color: var(--green);
-
-white-space: nowrap;
-
-margin-left: 12px;
-
-border: 1px solid rgba(0, 255, 102, 0.2);
-
-}
-
-
-
-.empty-msg {
-
-text-align: center;
-
-color: var(--muted);
-
-font-size: 0.9rem;
-
-padding: 24px 0;
-
-display: none;
-
-}
-
-
-
-footer {
-
-text-align: center;
-
-margin-top: 36px;
-
-font-size: 0.78rem;
-
-color: var(--muted);
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keycraft • Mods Links</title>
+  <style>
+    :root {
+      --bg: #030703;
+      --card: #0a120a;
+      --card-hover: #101c10;
+      --border: #162e16;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      
+      /* Cores Verdes Dinâmicas e Vibrantes */
+      --green: #00ff66;
+      --green-light: #33ff88;
+      --green-dark: #008833;
+      --green-glow: rgba(0, 255, 102, 0.35);
+      --green-glow-strong: rgba(0, 255, 102, 0.6);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% -20%, rgba(0, 255, 102, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(0, 136, 51, 0.1) 0%, transparent 50%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 36px 16px 48px;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar-container {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      padding: 3px;
+      box-shadow: 0 0 32px var(--green-glow);
+      animation: pulseGlow 3s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px rgba(0, 255, 102, 0.2); }
+      100% { box-shadow: 0 0 38px var(--green-glow-strong); }
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #0d140d;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #fff, var(--green-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header .handle {
+      color: var(--green);
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 15px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-pix {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: #030a03;
+      box-shadow: 0 4px 24px var(--green-glow);
+      font-weight: 800;
+    }
+
+    .btn-pix:hover {
+      background: linear-gradient(135deg, var(--green-light), var(--green));
+      box-shadow: 0 6px 30px var(--green-glow-strong);
+    }
+
+    .btn-video {
+      background-color: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-video:hover {
+      border-color: var(--green);
+      background-color: var(--card-hover);
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+    }
+
+    .search-filter-wrapper {
+      margin-bottom: 16px;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background-color: var(--card);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.25);
+    }
+
+    /* Filtros rápidos */
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .filter-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .pill:hover, .pill.active {
+      background-color: rgba(0, 255, 102, 0.15);
+      border-color: var(--green);
+      color: var(--green);
+      box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .mod-count {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .mod-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mod-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px 18px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background-color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mod-card:hover {
+      background-color: var(--card-hover);
+      border-color: var(--green);
+      transform: translateX(4px);
+      box-shadow: 0 4px 20px rgba(0, 255, 102, 0.15);
+    }
+
+    .mod-info h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+      transition: color 0.2s;
+    }
+
+    .mod-card:hover .mod-info h3 {
+      color: var(--green-light);
+    }
+
+    .mod-info p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 9px;
+      border-radius: 6px;
+      background-color: rgba(0, 255, 102, 0.15);
+      color: var(--green);
+      white-space: nowrap;
+      margin-left: 12px;
+      border: 1px solid rgba(0, 255, 102, 0.2);
+    }
+
+    .empty-msg {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 24px 0;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="container">
-
-<header>
-
-<div class="avatar-container">
-
-<img class="avatar" src="./avatar.png" alt="Keycraft" onerror="this.onerror=null; this.src='https://visage.surgeplay.com/bust/256/Keyyycraft';" />
-
-</div>
-
-<h1>Key</h1>
-
-<div class="handle">@Keyyycraft</div>
-
-<p>Tudo sobre esses Blocos! Links diretos do Modrinth</p>
-
-</header>
-
-
-
-<div class="actions">
-
-<a href="https://livepix.gg/keycraft" target="_blank" rel="noopener" class="btn-primary btn-pix">
-
-💚 Apoiar o canal / Pedir um mod (LivePix)
-
-</a>
-
-
-
-<a href="https://youtube.com/@Keyyycraft" target="_blank" rel="noopener" class="btn-primary btn-video">
-
-▶️ Canal no YouTube & Vídeos Completos
-
-</a>
-
-</div>
-
-
-
-<div class="search-filter-wrapper">
-
-<div class="search-box">
-
-<input type="text" id="searchInput" placeholder="Pesquisar mod por nome ou função..." />
-
-</div>
-
-<div class="filter-pills" id="filterPills">
-
-<button class="pill active" data-filter="all">Todos</button>
-
-<button class="pill" data-filter="otimização">Otimização</button>
-
-<button class="pill" data-filter="construção">Construção</button>
-
-<button class="pill" data-filter="visuais">Visuais</button>
-
-<button class="pill" data-filter="utilidade">Utilidade</button>
-
-</div>
-
-</div>
-
-
-
-<div class="section-header">
-
-<div class="section-title">Lista de Mods em Destaque</div>
-
-<div class="mod-count" id="modCount">16 mods</div>
-
-</div>
-
-
-
-<div class="mod-list" id="modList">
-
-<!-- OTIMIZAÇÃO -->
-
-<a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
-
-<div class="mod-info">
-
-<h3>Sodium</h3>
-
-<p>Otimização extrema de FPS e renderização</p>
-
-</div>
-
-<span class="tag">Otimização</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/sodium-extra" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
-
-<div class="mod-info">
-
-<h3>Sodium Extra</h3>
-
-<p>Opções extras de configuração gráfica para o Sodium</p>
-
-</div>
-
-<span class="tag">Otimização</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
-
-<div class="mod-info">
-
-<h3>Lithium</h3>
-
-<p>Melhora física, chunks e desempenho geral</p>
-
-</div>
-
-<span class="tag">Otimização</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/immediatelyfast" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
-
-<div class="mod-info">
-
-<h3>ImmediatelyFast</h3>
-
-<p>Otimiza a renderização de entidades, blocos e UI</p>
-
-</div>
-
-<span class="tag">Otimização</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/entityculling" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
-
-<div class="mod-info">
-
-<h3>Entity Culling</h3>
-
-<p>Não renderiza entidades escondidas atrás de paredes</p>
-
-</div>
-
-<span class="tag">Otimização</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/ferritecore" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
-
-<div class="mod-info">
-
-<h3>FerriteCore</h3>
-
-<p>Reduz drasticamente o consumo de memória RAM</p>
-
-</div>
-
-<span class="tag">Otimização</span>
-
-</a>
-
-
-
-<!-- CONSTRUÇÃO & DECORAÇÃO -->
-
-<a href="https://modrinth.com/mod/axiom" target="_blank" rel="noopener" class="mod-card" data-category="construção">
-
-<div class="mod-info">
-
-<h3>Axiom</h3>
-
-<p>Ferramenta de edição e construção estilo editor profissional</p>
-
-</div>
-
-<span class="tag">Construção</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/effortless-building" target="_blank" rel="noopener" class="mod-card" data-category="construção">
-
-<div class="mod-info">
-
-<h3>Effortless Building</h3>
-
-<p>Construa estruturas gigantes e espelhadas em segundos</p>
-
-</div>
-
-<span class="tag">Construção</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/macaws-furniture" target="_blank" rel="noopener" class="mod-card" data-category="construção">
-
-<div class="mod-info">
-
-<h3>Macaw's Furniture</h3>
-
-<p>Cadeiras, mesas, prateleiras e decorações detalhadas</p>
-
-</div>
-
-<span class="tag">Construção</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/a-little-furniture" target="_blank" rel="noopener" class="mod-card" data-category="construção">
-
-<div class="mod-info">
-
-<h3>A Little Furniture</h3>
-
-<p>Mais opções de móveis aconchegantes para suas bases</p>
-
-</div>
-
-<span class="tag">Construção</span>
-
-</a>
-
-
-
-<!-- VISUAIS & ANIMAÇÕES -->
-
-<a href="https://modrinth.com/mod/iris" target="_blank" rel="noopener" class="mod-card" data-category="visuais">
-
-<div class="mod-info">
-
-<h3>Iris Shaders</h3>
-
-<p>Suporte a shaders de altíssimo desempenho integrado ao Sodium</p>
-
-</div>
-
-<span class="tag">Visuais</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/fresh-animations" target="_blank" rel="noopener" class="mod-card" data-category="visuais">
-
-<div class="mod-info">
-
-<h3>Fresh Animations</h3>
-
-<p>Dá vida aos mobs com expressões faciais e movimentos fluidos</p>
-
-</div>
-
-<span class="tag">Visuais</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/emotecraft" target="_blank" rel="noopener" class="mod-card" data-category="visuais">
-
-<div class="mod-info">
-
-<h3>Emotecraft</h3>
-
-<p>Expresse-se no multiplayer com emotes e animações personalizadas</p>
-
-</div>
-
-<span class="tag">Visuais</span>
-
-</a>
-
-
-
-<!-- UTILIDADES & QUALIDADE DE VIDA -->
-
-<a href="https://modrinth.com/mod/xaeros-minimap" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
-
-<div class="mod-info">
-
-<h3>Xaero's Minimap</h3>
-
-<p>Minimapa limpo e customizável com waypoints e radar</p>
-
-</div>
-
-<span class="tag">Utilidade</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/flashback" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
-
-<div class="mod-info">
-
-<h3>Flashback</h3>
-
-<p>Grave e reproduza suas melhores sessões de construção</p>
-
-</div>
-
-<span class="tag">Utilidade</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/zoomify" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
-
-<div class="mod-info">
-
-<h3>Zoomify</h3>
-
-<p>Zoom óptico suave configurável no jogo</p>
-
-</div>
-
-<span class="tag">Utilidade</span>
-
-</a>
-
-
-
-<a href="https://modrinth.com/mod/modmenu" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
-
-<div class="mod-info">
-
-<h3>Mod Menu</h3>
-
-<p>Interface gráfica limpa para gerenciar e configurar seus mods</p>
-
-</div>
-
-<span class="tag">Utilidade</span>
-
-</a>
-
-</div>
-
-
-
-<div class="empty-msg" id="emptyMsg">Nenhum mod encontrado com esses critérios.</div>
-
-
-
-<footer>
-
-Keycraft • Links oficiais do Modrinth
-
-</footer>
-
-</div>
-
-
-
-<script>
-
-const searchInput = document.getElementById("searchInput");
-
-const modCards = document.querySelectorAll(".mod-card");
-
-const emptyMsg = document.getElementById("emptyMsg");
-
-const modCount = document.getElementById("modCount");
-
-const pills = document.querySelectorAll(".pill");
-
-
-
-let currentFilter = "all";
-
-
-
-function filterMods() {
-
-const term = searchInput.value.toLowerCase().trim();
-
-let visibleCount = 0;
-
-
-
-modCards.forEach((card) => {
-
-const text = card.innerText.toLowerCase();
-
-const category = card.getAttribute("data-category");
-
-
-const matchesSearch = text.includes(term);
-
-const matchesCategory = currentFilter === "all" || category === currentFilter;
-
-
-
-if (matchesSearch && matchesCategory) {
-
-card.style.display = "flex";
-
-visibleCount++;
-
-} else {
-
-card.style.display = "none";
-
-}
-
-});
-
-
-
-emptyMsg.style.display = visibleCount === 0 ? "block" : "none";
-
-modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
-
-}
-
-
-
-searchInput.addEventListener("input", filterMods);
-
-
-
-pills.forEach(pill => {
-
-pill.addEventListener("click", () => {
-
-pills.forEach(p => p.classList.remove("active"));
-
-pill.classList.add("active");
-
-currentFilter = pill.getAttribute("data-filter");
-
-filterMods();
-
-});
-
-});
-
-</script>
-
+  <div class="container">
+    <header>
+      <div class="avatar-container">
+        <img class="avatar" src="./avatar.png" alt="Keycraft" onerror="this.onerror=null; this.src='https://visage.surgeplay.com/bust/256/Keyyycraft';" />
+      </div>
+      <h1>Key</h1>
+      <div class="handle">@Keyyycraft</div>
+      <p>Tudo sobre esses Blocos! Links diretos do Modrinth</p>
+    </header>
+
+    <div class="actions">
+      <a href="https://livepix.gg/keycraft" target="_blank" rel="noopener" class="btn-primary btn-pix">
+        💚 Apoiar o canal / Pedir um mod (LivePix)
+      </a>
+
+      <a href="https://youtube.com/@Keyyycraft" target="_blank" rel="noopener" class="btn-primary btn-video">
+        ▶️ Canal no YouTube & Vídeos Completos
+      </a>
+
+      <!-- Novos Links Adicionados -->
+      <a href="https://www.tiktok.com/@keyyycraft?lang=pt-BR" target="_blank" rel="noopener" class="btn-primary btn-video">
+        🎵 TikTok @keyyycraft
+      </a>
+
+      <a href="https://k.kwai.com/w/b6jU4jEP" target="_blank" rel="noopener" class="btn-primary btn-video">
+        🎬 Kwai Oficial
+      </a>
+    </div>
+
+    <div class="search-filter-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Pesquisar mod por nome ou função..." />
+      </div>
+      <div class="filter-pills" id="filterPills">
+        <button class="pill active" data-filter="all">Todos</button>
+        <button class="pill" data-filter="otimização">Otimização</button>
+        <button class="pill" data-filter="construção">Construção</button>
+        <button class="pill" data-filter="visuais">Visuais</button>
+        <button class="pill" data-filter="utilidade">Utilidade</button>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="section-title">Lista de Mods em Destaque</div>
+      <div class="mod-count" id="modCount">16 mods</div>
+    </div>
+
+    <div class="mod-list" id="modList">
+      <!-- OTIMIZAÇÃO -->
+      <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+        <div class="mod-info">
+          <h3>Sodium</h3>
+          <p>Otimização extrema de FPS e renderização</p>
+        </div>
+        <span class="tag">Otimização</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/sodium-extra" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+        <div class="mod-info">
+          <h3>Sodium Extra</h3>
+          <p>Opções extras de configuração gráfica para o Sodium</p>
+        </div>
+        <span class="tag">Otimização</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+        <div class="mod-info">
+          <h3>Lithium</h3>
+          <p>Melhora física, chunks e desempenho geral</p>
+        </div>
+        <span class="tag">Otimização</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/immediatelyfast" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+        <div class="mod-info">
+          <h3>ImmediatelyFast</h3>
+          <p>Otimiza a renderização de entidades, blocos e UI</p>
+        </div>
+        <span class="tag">Otimização</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/entityculling" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+        <div class="mod-info">
+          <h3>Entity Culling</h3>
+          <p>Não renderiza entidades escondidas atrás de paredes</p>
+        </div>
+        <span class="tag">Otimização</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/ferritecore" target="_blank" rel="noopener" class="mod-card" data-category="otimização">
+        <div class="mod-info">
+          <h3>FerriteCore</h3>
+          <p>Reduz drasticamente o consumo de memória RAM</p>
+        </div>
+        <span class="tag">Otimização</span>
+      </a>
+
+      <!-- CONSTRUÇÃO & DECORAÇÃO -->
+      <a href="https://modrinth.com/mod/axiom" target="_blank" rel="noopener" class="mod-card" data-category="construção">
+        <div class="mod-info">
+          <h3>Axiom</h3>
+          <p>Ferramenta de edição e construção estilo editor profissional</p>
+        </div>
+        <span class="tag">Construção</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/effortless-building" target="_blank" rel="noopener" class="mod-card" data-category="construção">
+        <div class="mod-info">
+          <h3>Effortless Building</h3>
+          <p>Construa estruturas gigantes e espelhadas em segundos</p>
+        </div>
+        <span class="tag">Construção</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/macaws-furniture" target="_blank" rel="noopener" class="mod-card" data-category="construção">
+        <div class="mod-info">
+          <h3>Macaw's Furniture</h3>
+          <p>Cadeiras, mesas, prateleiras e decorações detalhadas</p>
+        </div>
+        <span class="tag">Construção</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/a-little-furniture" target="_blank" rel="noopener" class="mod-card" data-category="construção">
+        <div class="mod-info">
+          <h3>A Little Furniture</h3>
+          <p>Mais opções de móveis aconchegantes para suas bases</p>
+        </div>
+        <span class="tag">Construção</span>
+      </a>
+
+      <!-- VISUAIS & ANIMAÇÕES -->
+      <a href="https://modrinth.com/mod/iris" target="_blank" rel="noopener" class="mod-card" data-category="visuais">
+        <div class="mod-info">
+          <h3>Iris Shaders</h3>
+          <p>Suporte a shaders de altíssimo desempenho integrado ao Sodium</p>
+        </div>
+        <span class="tag">Visuais</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/fresh-animations" target="_blank" rel="noopener" class="mod-card" data-category="visuais">
+        <div class="mod-info">
+          <h3>Fresh Animations</h3>
+          <p>Dá vida aos mobs com expressões faciais e movimentos fluidos</p>
+        </div>
+        <span class="tag">Visuais</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/emotecraft" target="_blank" rel="noopener" class="mod-card" data-category="visuais">
+        <div class="mod-info">
+          <h3>Emotecraft</h3>
+          <p>Expresse-se no multiplayer com emotes e animações personalizadas</p>
+        </div>
+        <span class="tag">Visuais</span>
+      </a>
+
+      <!-- UTILIDADES & QUALIDADE DE VIDA -->
+      <a href="https://modrinth.com/mod/xaeros-minimap" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
+        <div class="mod-info">
+          <h3>Xaero's Minimap</h3>
+          <p>Minimapa limpo e customizável com waypoints e radar</p>
+        </div>
+        <span class="tag">Utilidade</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/flashback" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
+        <div class="mod-info">
+          <h3>Flashback</h3>
+          <p>Grave e reproduza suas melhores sessões de construção</p>
+        </div>
+        <span class="tag">Utilidade</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/zoomify" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
+        <div class="mod-info">
+          <h3>Zoomify</h3>
+          <p>Zoom óptico suave configurável no jogo</p>
+        </div>
+        <span class="tag">Utilidade</span>
+      </a>
+
+      <a href="https://modrinth.com/mod/modmenu" target="_blank" rel="noopener" class="mod-card" data-category="utilidade">
+        <div class="mod-info">
+          <h3>Mod Menu</h3>
+          <p>Interface gráfica limpa para gerenciar e configurar seus mods</p>
+        </div>
+        <span class="tag">Utilidade</span>
+      </a>
+    </div>
+
+    <div class="empty-msg" id="emptyMsg">Nenhum mod encontrado com esses critérios.</div>
+
+    <footer>
+      Keycraft • Links oficiais do Modrinth
+    </footer>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const modCards = document.querySelectorAll(".mod-card");
+    const emptyMsg = document.getElementById("emptyMsg");
+    const modCount = document.getElementById("modCount");
+    const pills = document.querySelectorAll(".pill");
+
+    let currentFilter = "all";
+
+    function filterMods() {
+      const term = searchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      modCards.forEach((card) => {
+        const text = card.innerText.toLowerCase();
+        const category = card.getAttribute("data-category");
+        
+        const matchesSearch = text.includes(term);
+        const matchesCategory = currentFilter === "all" || category === currentFilter;
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = "flex";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      emptyMsg.style.display = visibleCount === 0 ? "block" : "none";
+      modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
+    }
+
+    searchInput.addEventListener("input", filterMods);
+
+    pills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        pills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        currentFilter = pill.getAttribute("data-filter");
+        filterMods();
+      });
+    });
+  </script>
 </body>
-
 </html>
