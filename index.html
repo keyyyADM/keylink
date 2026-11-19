@@ -6,25 +6,22 @@
   <title>Keycraft • Mods & Loja</title>
   <style>
     :root {
-      --bg: #040905;
-      --card: rgba(10, 20, 12, 0.85);
-      --card-hover: rgba(16, 32, 20, 0.95);
-      --border: #1b3b20;
+      --bg: #030704;
+      --surface: rgba(10, 18, 12, 0.65);
+      --surface-hover: rgba(16, 30, 20, 0.85);
+      --border: rgba(0, 255, 102, 0.14);
+      --border-hover: rgba(0, 255, 102, 0.55);
       --text: #f3f4f6;
-      --muted: #9ca3af;
-      
+      --muted: #8b9a90;
       --green: #00ff66;
-      --green-light: #33ff88;
-      --green-dark: #008833;
-      --green-glow: rgba(0, 255, 102, 0.35);
-      --green-glow-strong: rgba(0, 255, 102, 0.6);
+      --green-soft: rgba(0, 255, 102, 0.12);
     }
 
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
     }
 
     body {
@@ -32,195 +29,304 @@
       color: var(--text);
       display: flex;
       justify-content: center;
-      padding: 36px 16px 48px;
+      padding: 44px 16px 64px;
       min-height: 100vh;
-      position: relative;
       overflow-x: hidden;
+      position: relative;
     }
 
-    .mc-world-bg {
+    /* Fundo Minecraft Interativo (Canvas) */
+    #mcCanvas {
       position: fixed;
       inset: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, #030b06 0%, #071a0e 45%, #0c2b16 80%, #051208 100%);
-      overflow: hidden;
-    }
-
-    .mc-stars {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(2px 2px at 15% 12%, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(2px 2px at 35% 25%, rgba(0, 255, 102, 0.5), transparent),
-        radial-gradient(3px 3px at 65% 15%, rgba(255, 255, 255, 0.35), transparent),
-        radial-gradient(2px 2px at 82% 28%, rgba(0, 255, 102, 0.4), transparent),
-        radial-gradient(2px 2px at 50% 8%, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(2px 2px at 22% 40%, rgba(255, 255, 255, 0.25), transparent),
-        radial-gradient(2px 2px at 78% 42%, rgba(0, 255, 102, 0.3), transparent);
-    }
-
-    .mc-clouds {
-      position: absolute;
-      top: 8%;
-      left: 0;
-      width: 200%;
-      height: 120px;
-      background-image: 
-        linear-gradient(90deg, transparent 0%, transparent 10%, rgba(255,255,255,0.03) 10%, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 55%, rgba(255,255,255,0.025) 55%, rgba(255,255,255,0.025) 75%, transparent 75%);
-      animation: moveClouds 45s linear infinite;
-    }
-
-    @keyframes moveClouds {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .mc-terrain {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 220px;
-      opacity: 0.45;
     }
 
     .container {
       width: 100%;
-      max-width: 520px;
+      max-width: 480px;
       position: relative;
       z-index: 1;
     }
 
+    /* Cabeçalho Minimalista */
     header {
       text-align: center;
       margin-bottom: 28px;
     }
 
-    .avatar-container {
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 14px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      padding: 3px;
-      box-shadow: 0 0 32px var(--green-glow);
-      animation: pulseGlow 3s infinite alternate;
+    .block-badge {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 16px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s;
     }
 
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 20px rgba(0, 255, 102, 0.2); }
-      100% { box-shadow: 0 0 38px var(--green-glow-strong); }
+    .block-badge:hover {
+      transform: translateY(-3px) scale(1.04);
+      border-color: var(--border-hover);
     }
 
-    .avatar-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: #081209;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .avatar-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .block-badge svg {
+      width: 38px;
+      height: 38px;
     }
 
     header h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #ffffff;
       margin-bottom: 4px;
-      letter-spacing: -0.02em;
-      background: linear-gradient(90deg, #fff, var(--green-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     header .handle {
       color: var(--green);
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
     }
 
     header p {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      line-height: 1.4;
     }
 
+    /* Botões Dinâmicos e Minimalistas */
     .actions {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 24px;
     }
 
-    .social-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+      overflow: hidden;
+    }
+
+    .btn-left {
+      display: flex;
+      align-items: center;
       gap: 12px;
     }
 
-    .btn-primary {
+    .btn svg.icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      opacity: 0.9;
+      transition: transform 0.22s ease, color 0.22s ease;
+    }
+
+    .btn .arrow {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: transform 0.22s ease, color 0.22s ease;
+    }
+
+    .btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 255, 102, 0.12);
+    }
+
+    .btn:hover svg.icon {
+      color: var(--green);
+      transform: scale(1.08);
+    }
+
+    .btn:hover .arrow {
+      color: var(--green);
+      transform: translateX(3px);
+    }
+
+    .btn-highlight {
+      background: linear-gradient(135deg, rgba(0, 255, 102, 0.16), rgba(0, 136, 51, 0.12));
+      border-color: rgba(0, 255, 102, 0.35);
+    }
+
+    .btn-highlight:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 102, 0.24), rgba(0, 136, 51, 0.18));
+      border-color: var(--green);
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .social-grid .btn {
+      padding: 12px 10px;
+      font-size: 0.82rem;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .social-grid .btn .arrow {
+      display: none;
+    }
+
+    /* Abas de Navegação (Mods / Minha Loja) */
+    .main-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: var(--surface);
+      padding: 6px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      margin-bottom: 22px;
+    }
+
+    .tab-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      text-decoration: none;
-      padding: 15px 18px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.96rem;
-      backdrop-filter: blur(8px);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      gap: 8px;
+      padding: 11px 14px;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.22s ease;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
+    .tab-btn svg {
+      width: 16px;
+      height: 16px;
     }
 
-    .btn-pix {
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      color: #030a03;
-      box-shadow: 0 4px 24px var(--green-glow);
-      font-weight: 800;
-    }
-
-    .btn-pix:hover {
-      background: linear-gradient(135deg, var(--green-light), var(--green));
-      box-shadow: 0 6px 30px var(--green-glow-strong);
-    }
-
-    .btn-video {
-      background-color: var(--card);
+    .tab-btn:hover {
       color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--green-soft);
+      color: var(--green);
+      box-shadow: inset 0 0 0 1px rgba(0, 255, 102, 0.35);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Busca & Filtros Minimalistas */
+    .controls {
+      margin-bottom: 16px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
       border: 1px solid var(--border);
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      margin-bottom: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .btn-video:hover {
+    .search-box input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-box input:focus {
       border-color: var(--green);
-      background-color: var(--card-hover);
-      box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+      box-shadow: 0 0 0 2px rgba(0, 255, 102, 0.15);
     }
 
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .filter-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .pill:hover {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .pill.active {
+      background: var(--green-soft);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* Lista de Mods */
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
-      margin-top: 32px;
+      margin-bottom: 10px;
+      padding: 0 2px;
     }
 
     .section-title {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--muted);
@@ -228,353 +334,710 @@
     }
 
     .mod-count {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--muted);
     }
 
     .mod-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .mod-card {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: var(--card);
-      backdrop-filter: blur(8px);
+      background: var(--surface);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 15px 18px;
+      border-radius: 10px;
+      padding: 12px 14px;
       text-decoration: none;
       color: var(--text);
-      transition: background-color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      transition: all 0.2s ease;
+      gap: 12px;
     }
 
     .mod-card:hover {
-      background-color: var(--card-hover);
-      border-color: var(--green);
-      transform: translateX(4px);
-      box-shadow: 0 4px 20px rgba(0, 255, 102, 0.15);
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+      transform: translateX(3px);
+    }
+
+    .mod-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mod-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 9px;
+      background: rgba(0, 255, 102, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--green);
+    }
+
+    .mod-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mod-thumb svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.75;
+    }
+
+    .mod-info {
+      min-width: 0;
     }
 
     .mod-info h3 {
-      font-size: 0.98rem;
+      font-size: 0.92rem;
       font-weight: 600;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       transition: color 0.2s;
     }
 
     .mod-card:hover .mod-info h3 {
-      color: var(--green-light);
+      color: var(--green);
     }
 
     .mod-info p {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--muted);
+      line-height: 1.35;
     }
 
     .tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 5px 9px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 4px 8px;
       border-radius: 6px;
-      background-color: rgba(0, 255, 102, 0.15);
+      background: var(--green-soft);
       color: var(--green);
       white-space: nowrap;
-      margin-left: 12px;
-      border: 1px solid rgba(0, 255, 102, 0.2);
+      flex-shrink: 0;
     }
 
-    .store-grid {
+    /* Cards da Minha Loja (Afiliados) */
+    .shop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .product-card {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    .store-card {
-      background: linear-gradient(135deg, rgba(12, 28, 16, 0.9), rgba(6, 14, 8, 0.95));
-      border: 1px solid rgba(0, 255, 102, 0.25);
-      border-radius: 14px;
-      padding: 16px;
+      justify-content: space-between;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
       text-decoration: none;
       color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      transition: all 0.22s ease;
     }
 
-    .store-card:hover {
+    .product-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
       transform: translateY(-3px);
-      border-color: var(--green);
-      box-shadow: 0 6px 25px rgba(0, 255, 102, 0.25);
+      box-shadow: 0 8px 24px rgba(0, 255, 102, 0.1);
     }
 
-    .store-img-box {
-      width: 88px;
-      height: 88px;
-      flex-shrink: 0;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+    .product-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 8px;
+      background: rgba(0, 255, 102, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6px;
+      margin-bottom: 10px;
       overflow: hidden;
+      color: var(--green);
     }
 
-    .store-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 255, 102, 0.2));
-      transition: transform 0.3s ease;
-    }
-
-    .store-card:hover .store-img-box img {
-      transform: scale(1.08);
-    }
-
-    .store-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .product-thumb svg {
+      width: 28px;
+      height: 28px;
+      opacity: 0.85;
     }
 
     .store-badge {
-      align-self: flex-start;
-      background: linear-gradient(135deg, #ff5500, #ff8800);
-      color: #fff;
+      display: inline-block;
       font-size: 0.65rem;
-      font-weight: 800;
-      padding: 3px 7px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .store-title {
-      font-size: 0.95rem;
       font-weight: 700;
-      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 7px;
+      border-radius: 5px;
+      margin-bottom: 6px;
+      width: fit-content;
+    }
+
+    .badge-shopee {
+      background: rgba(238, 77, 45, 0.18);
+      color: #ff6b4a;
+      border: 1px solid rgba(238, 77, 45, 0.3);
+    }
+
+    .badge-amazon {
+      background: rgba(255, 153, 0, 0.16);
+      color: #ffb340;
+      border: 1px solid rgba(255, 153, 0, 0.3);
+    }
+
+    .product-card h3 {
+      font-size: 0.88rem;
+      font-weight: 600;
       line-height: 1.3;
+      margin-bottom: 4px;
     }
 
-    .store-footer-row {
+    .product-card p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .product-cta {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-top: 2px;
-    }
-
-    .store-price {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--green-light);
-      text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
-    }
-
-    .store-btn {
-      background-color: var(--green);
-      color: #030a03;
+      justify-content: space-between;
       font-size: 0.78rem;
-      font-weight: 800;
-      padding: 7px 12px;
-      border-radius: 8px;
-      transition: background-color 0.2s, box-shadow 0.2s;
+      font-weight: 600;
+      color: var(--green);
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .store-card:hover .store-btn {
-      background-color: var(--green-light);
-      box-shadow: 0 0 12px var(--green-glow-strong);
+    .empty-msg {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.86rem;
+      padding: 28px 0;
+      display: none;
     }
 
     footer {
       text-align: center;
-      margin-top: 36px;
-      font-size: 0.78rem;
+      margin-top: 40px;
+      font-size: 0.75rem;
       color: var(--muted);
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <div class="mc-world-bg">
-    <div class="mc-stars"></div>
-    <div class="mc-clouds"></div>
-    <svg class="mc-terrain" viewBox="0 0 1200 220" preserveAspectRatio="none">
-      <polygon points="0,220 0,120 120,120 120,80 280,80 280,140 450,140 450,60 640,60 640,110 820,110 820,50 1000,50 1000,130 1200,130 1200,220" fill="#091f10" />
-      <polygon points="0,220 0,150 180,150 180,110 380,110 380,165 560,165 560,100 760,100 760,155 960,155 960,115 1200,115 1200,220" fill="#0d2e17" />
-      <polygon points="0,220 0,180 240,180 240,160 520,160 520,185 880,185 880,165 1200,165 1200,220" fill="#124020" />
-      <rect x="0" y="180" width="240" height="8" fill="#00ff66" opacity="0.25" />
-      <rect x="240" y="160" width="280" height="8" fill="#00ff66" opacity="0.25" />
-      <rect x="520" y="185" width="360" height="8" fill="#00ff66" opacity="0.25" />
-      <rect x="880" y="165" width="320" height="8" fill="#00ff66" opacity="0.25" />
-    </svg>
-  </div>
+  <!-- Fundo Interativo estilo Minecraft -->
+  <canvas id="mcCanvas"></canvas>
 
   <div class="container">
     <header>
-      <div class="avatar-container">
-        <div class="avatar-inner">
-          <img src="https://yt3.googleusercontent.com/PgxldB9DdWUJfxoNdWJiPIVn1NK4DdfJqaffPLMq224GW0h7v7it9hu17ft2b9cLD7jTDFF4=s160-c-k-c0x00ffffff-no-rj" alt="Keycraft Avatar" />
-        </div>
+      <div class="block-badge" title="Keycraft">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="32,8 56,21 32,34 8,21" fill="#33ff88" />
+          <polygon points="8,21 32,34 32,56 8,43" fill="#2d1e14" />
+          <polygon points="8,21 32,34 32,40 24,36 24,39 16,35 16,31 8,27" fill="#00cc55" />
+          <polygon points="56,21 32,34 32,56 56,43" fill="#1f140d" />
+          <polygon points="56,21 32,34 32,40 40,36 40,38 48,34 48,30 56,26" fill="#009940" />
+        </svg>
       </div>
       <h1>Key</h1>
       <div class="handle">@Keyyycraft</div>
-      <p>Tudo sobre esses Blocos! Links diretos do Modrinth & Ofertas</p>
+      <p>Tudo sobre esses Blocos! Links diretos do Modrinth & Afiliados</p>
     </header>
 
+    <!-- BOTÕES ESPECÍFICOS PRINCIPAIS -->
     <div class="actions">
-      <a href="https://livepix.gg/keycraft" target="_blank" rel="noopener" class="btn-primary btn-pix">
-        💚 Apoiar o canal / Pedir um mod (LivePix)
+      <a href="https://livepix.gg/keycraft" target="_blank" rel="noopener" class="btn btn-highlight">
+        <span class="btn-left">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          Apoiar Canal / LivePix
+        </span>
+        <span class="arrow">↗</span>
       </a>
 
-      <a href="https://youtube.com/@Keyyycraft" target="_blank" rel="noopener" class="btn-primary btn-video">
-        ▶️ Canal no YouTube & Vídeos Completos
-      </a>
-
-      <div class="social-row">
-        <a href="https://www.tiktok.com/@keyyycraft?lang=pt-BR" target="_blank" rel="noopener" class="btn-primary btn-video">
-          🎵 TikTok
+      <div class="social-grid">
+        <a href="https://youtube.com/@Keyyycraft" target="_blank" rel="noopener" class="btn" title="YouTube">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <span>YouTube</span>
         </a>
 
-        <a href="https://k.kwai.com/w/b6jU4jEP" target="_blank" rel="noopener" class="btn-primary btn-video">
-          🎬 Kwai
+        <a href="https://www.tiktok.com/@keyyycraft?lang=pt-BR" target="_blank" rel="noopener" class="btn" title="TikTok">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+          </svg>
+          <span>TikTok</span>
+        </a>
+
+        <a href="https://k.kwai.com/w/b6jU4jEP" target="_blank" rel="noopener" class="btn" title="Kwai">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="4"/>
+            <polygon points="10 9 15 12 10 15 10 9"/>
+          </svg>
+          <span>Kwai</span>
         </a>
       </div>
     </div>
 
-    <div class="section-header">
-      <div class="section-title">Lista de Mods em Destaque</div>
-      <div class="mod-count">6 mods</div>
+    <!-- Navegação entre Abas: Página Inicial Mods vs Lojinha Minecraft -->
+    <div class="main-tabs">
+      <button class="tab-btn active" data-tab="modsTab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Página Inicial Mods
+      </button>
+
+      <button class="tab-btn" data-tab="shopTab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        Lojinha Minecraft
+      </button>
     </div>
 
-    <div class="mod-list">
-      <a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener" class="mod-card">
-        <div class="mod-info">
-          <h3>Sodium</h3>
-          <p>Otimização extrema de FPS e renderização</p>
+    <!-- ABA 1: PÁGINA INICIAL MODS -->
+    <div id="modsTab" class="tab-panel active">
+      <div class="controls">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Pesquisar mod por nome ou função..." />
         </div>
-        <span class="tag">Otimização</span>
-      </a>
+        <div class="filter-pills" id="filterPills">
+          <button class="pill active" data-filter="all">Todos</button>
+          <button class="pill" data-filter="otimização">Otimização</button>
+          <button class="pill" data-filter="construção">Construção</button>
+          <button class="pill" data-filter="visuais">Visuais</button>
+          <button class="pill" data-filter="utilidade">Utilidade</button>
+        </div>
+      </div>
 
-      <a href="https://modrinth.com/mod/sodium-extra" target="_blank" rel="noopener" class="mod-card">
-        <div class="mod-info">
-          <h3>Sodium Extra</h3>
-          <p>Opções extras de configuração gráfica para o Sodium</p>
-        </div>
-        <span class="tag">Otimização</span>
-      </a>
+      <div class="section-header">
+        <div class="section-title">Mods em Destaque</div>
+        <div class="mod-count" id="modCount">8 mods</div>
+      </div>
 
-      <a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener" class="mod-card">
-        <div class="mod-info">
-          <h3>Lithium</h3>
-          <p>Melhora física, chunks e desempenho geral</p>
-        </div>
-        <span class="tag">Otimização</span>
-      </a>
+      <div class="mod-list" id="modList"></div>
 
-      <a href="https://modrinth.com/mod/immediatelyfast" target="_blank" rel="noopener" class="mod-card">
-        <div class="mod-info">
-          <h3>ImmediatelyFast</h3>
-          <p>Otimiza a renderização de entidades, blocos e UI</p>
-        </div>
-        <span class="tag">Otimização</span>
-      </a>
-
-      <a href="https://modrinth.com/mod/entityculling" target="_blank" rel="noopener" class="mod-card">
-        <div class="mod-info">
-          <h3>Entity Culling</h3>
-          <p>Não renderiza entidades escondidas atrás de paredes</p>
-        </div>
-        <span class="tag">Otimização</span>
-      </a>
-
-      <a href="https://modrinth.com/mod/ferritecore" target="_blank" rel="noopener" class="mod-card">
-        <div class="mod-info">
-          <h3>FerriteCore</h3>
-          <p>Reduz drasticamente o consumo de memória RAM</p>
-        </div>
-        <span class="tag">Otimização</span>
-      </a>
+      <div class="empty-msg" id="emptyMsg">Nenhum mod encontrado.</div>
     </div>
 
-    <div class="section-header">
-      <div class="section-title">📦 Vitrine de Ofertas & Achados Shopee</div>
-      <div class="mod-count">Afiliados</div>
-    </div>
+    <!-- ABA 2: LOJINHA MINECRAFT (AFILIADOS SHOPEE/AMAZON) -->
+    <div id="shopTab" class="tab-panel">
+      <div class="controls">
+        <div class="search-box">
+          <input type="text" id="shopSearchInput" placeholder="Buscar produto na lojinha..." />
+        </div>
+        <div class="filter-pills" id="shopFilterPills">
+          <button class="pill active" data-shop-filter="all">Todos</button>
+          <button class="pill" data-shop-filter="shopee">Shopee</button>
+          <button class="pill" data-shop-filter="amazon">Amazon</button>
+          <button class="pill" data-shop-filter="setup">Setup & Gamer</button>
+        </div>
+      </div>
 
-    <div class="store-grid">
-      <!-- 1. LEGO Dragão Ender -->
-      <a href="https://s.shopee.com.br/7AfEO9lxx3" target="_blank" rel="noopener" class="store-card">
-        <div class="store-img-box">
-          <img src="https://down-tx-br.img.susercontent.com/sg-11134201-825al-mtqq6syg42yye8.webp" alt="LEGO Dragão Ender" />
-        </div>
-        <div class="store-info">
-          <span class="store-badge">Oficial Shopee</span>
-          <div class="store-title">LEGO Minecraft O Dragão Ender</div>
-          <div class="store-footer-row">
-            <div class="store-price">R$ 445,74</div>
-            <div class="store-btn">Ver Oferta ➔</div>
-          </div>
-        </div>
-      </a>
+      <div class="section-header">
+        <div class="section-title">Achadinhos & Setup Gamer</div>
+        <div class="mod-count" id="shopCount">4 itens</div>
+      </div>
 
-      <!-- 2. Minecraft Blocos de Montar -->
-      <a href="https://s.shopee.com.br/2BGYQu1nuX" target="_blank" rel="noopener" class="store-card">
-        <div class="store-img-box">
-          <img src="https://down-tx-br.img.susercontent.com/br-11134207-7r98o-m8e3zb9mp9tddf.webp" alt="Minecraft Blocos de Montar" />
-        </div>
-        <div class="store-info">
-          <span class="store-badge">Pronta Entrega</span>
-          <div class="store-title">Minecraft Blocos De Montar Brinquedo</div>
-          <div class="store-footer-row">
-            <div class="store-price">R$ 20,90</div>
-            <div class="store-btn">Ver Oferta ➔</div>
+      <div class="shop-grid" id="shopGrid">
+        <a href="https://shopee.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="shopee setup">
+          <div>
+            <div class="product-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <span class="store-badge badge-shopee">Shopee</span>
+            <h3>Mouse Gamer Leve</h3>
+            <p>Ideal para PvP, construção rápida e edições precisas.</p>
           </div>
-        </div>
-      </a>
+          <div class="product-cta">
+            <span>Ver oferta</span>
+            <span>↗</span>
+          </div>
+        </a>
 
-      <!-- 3. Copo Térmico 1200ml -->
-      <a href="https://s.shopee.com.br/4qHJchVNJA" target="_blank" rel="noopener" class="store-card">
-        <div class="store-img-box">
-          <img src="https://down-tx-br.img.susercontent.com/br-11134207-820lh-mujbb092sete37.webp" alt="Copo Garrafa Térmica" />
-        </div>
-        <div class="store-info">
-          <span class="store-badge">Mais Vendido</span>
-          <div class="store-title">Copo Caneca Térmica 1200 ML com Canudo</div>
-          <div class="store-footer-row">
-            <div class="store-price">R$ 54,89</div>
-            <div class="store-btn">Ver Oferta ➔</div>
+        <a href="https://shopee.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="shopee setup">
+          <div>
+            <div class="product-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
+              </svg>
+            </div>
+            <span class="store-badge badge-shopee">Shopee</span>
+            <h3>Teclado Mecânico 60%</h3>
+            <p>Compacto com switches silenciosos e RGB verde.</p>
           </div>
-        </div>
-      </a>
+          <div class="product-cta">
+            <span>Ver oferta</span>
+            <span>↗</span>
+          </div>
+        </a>
 
-      <!-- 4. Cascata 400 Leds -->
-      <a href="https://s.shopee.com.br/2LZye9ZLiH" target="_blank" rel="noopener" class="store-card">
-        <div class="store-img-box">
-          <img src="https://down-tx-br.img.susercontent.com/br-11134207-820ls-mtdy9yqpiltv31.webp" alt="Cascata 400 Leds" />
-        </div>
-        <div class="store-info">
-          <span class="store-badge">36% OFF</span>
-          <div class="store-title">Cascata 400 Led's 10 Metros Fixo ou 8 Funções</div>
-          <div class="store-footer-row">
-            <div class="store-price">R$ 63,99</div>
-            <div class="store-btn">Ver Oferta ➔</div>
+        <a href="https://www.amazon.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="amazon setup">
+          <div>
+            <div class="product-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </div>
+            <span class="store-badge badge-amazon">Amazon</span>
+            <h3>Microfone Condensador</h3>
+            <p>Áudio limpo para gravar vídeos e lives sem ruído.</p>
           </div>
-        </div>
-      </a>
+          <div class="product-cta">
+            <span>Ver oferta</span>
+            <span>↗</span>
+          </div>
+        </a>
+
+        <a href="https://shopee.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="shopee">
+          <div>
+            <div class="product-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+            </div>
+            <span class="store-badge badge-shopee">Shopee</span>
+            <h3>Luminária Bloco Minecraft</h3>
+            <p>Decoração temática para deixar o cenário idêntico ao jogo.</p>
+          </div>
+          <div class="product-cta">
+            <span>Ver oferta</span>
+            <span>↗</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="empty-msg" id="shopEmptyMsg">Nenhum produto encontrado.</div>
     </div>
 
     <footer>
-      Keycraft • Todos os direitos reservados
+      Keycraft • Modrinth & Lojinha Oficial
     </footer>
   </div>
+
+  <script>
+    // ============================================================
+    // LISTA OFICIAL DE MODS (Todos com imagem e link do Modrinth)
+    // ============================================================
+    const MODS_DATA = [
+      {
+        nome: "Weeping Creeper",
+        desc: "Creepers sombrios que se movem apenas quando você não está olhando",
+        cat: "visuais",
+        url: "https://modrinth.com/mod/weeping-creeper",
+        img: "https://media.forgecdn.net/avatars/thumbnails/1817/150/64/64/639148368305563960.png"
+      },
+      {
+        nome: "A Little Furniture",
+        desc: "Mais opções de móveis aconchegantes e funcionais para suas bases",
+        cat: "construção",
+        url: "https://modrinth.com/mod/a-little-furniture",
+        img: "https://cdn.modrinth.com/data/aYdScSxc/images/25adbaff2d83ffce88a98f61b6ca36af98b347f8.png"
+      },
+      {
+        nome: "Sodium",
+        desc: "Otimização extrema de FPS e renderização",
+        cat: "otimização",
+        url: "https://modrinth.com/mod/sodium",
+        img: "https://cdn.modrinth.com/data/AANobbMI/icon.png"
+      },
+      {
+        nome: "Sodium Extra",
+        desc: "Opções extras de configuração gráfica para o Sodium",
+        cat: "otimização",
+        url: "https://modrinth.com/mod/sodium-extra",
+        img: "https://cdn.modrinth.com/data/PtjYWJkn/icon.png"
+      },
+      {
+        nome: "Lithium",
+        desc: "Melhora física, chunks e desempenho geral",
+        cat: "otimização",
+        url: "https://modrinth.com/mod/lithium",
+        img: "https://cdn.modrinth.com/data/gvQqBUqZ/icon.png"
+      },
+      {
+        nome: "ImmediatelyFast",
+        desc: "Otimiza a renderização de entidades, blocos e UI",
+        cat: "otimização",
+        url: "https://modrinth.com/mod/immediatelyfast",
+        img: "https://cdn.modrinth.com/data/5ZwdcRci/8335dd505094a79b4ad306935b10f724e2b76d8b.png"
+      },
+      {
+        nome: "Entity Culling",
+        desc: "Não renderiza entidades escondidas atrás de paredes",
+        cat: "otimização",
+        url: "https://modrinth.com/mod/entityculling",
+        img: "https://cdn.modrinth.com/data/NNAgCjsB/icon.png"
+      },
+      {
+        nome: "FerriteCore",
+        desc: "Reduz drasticamente o consumo de memória RAM",
+        cat: "otimização",
+        url: "https://modrinth.com/mod/ferritecore",
+        img: "https://cdn.modrinth.com/data/uXXizFIs/icon.jpg"
+      }
+    ];
+
+    const TAG_LABELS = {
+      "otimização": "Otimização",
+      "construção": "Construção",
+      "visuais": "Visuais",
+      "utilidade": "Utilidade"
+    };
+
+    const FALLBACK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`;
+
+    const modListEl = document.getElementById("modList");
+
+    function renderMods() {
+      modListEl.innerHTML = MODS_DATA.map(mod => {
+        const thumbContent = mod.img
+          ? `<img src="${mod.img}" alt="${mod.nome}" loading="lazy" onerror="this.parentElement.innerHTML='${FALLBACK_ICON.replace(/"/g, '&quot;')}'">`
+          : FALLBACK_ICON;
+
+        return `
+          <a href="${mod.url}" target="_blank" rel="noopener" class="mod-card" data-category="${mod.cat}">
+            <div class="mod-left">
+              <div class="mod-thumb">${thumbContent}</div>
+              <div class="mod-info">
+                <h3>${mod.nome}</h3>
+                <p>${mod.desc}</p>
+              </div>
+            </div>
+            <span class="tag">${TAG_LABELS[mod.cat] || mod.cat}</span>
+          </a>
+        `;
+      }).join("");
+    }
+
+    renderMods();
+
+    // --- 1. Alternância entre Abas ---
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabBtns.forEach(b => b.classList.remove("active"));
+        tabPanels.forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.getAttribute("data-tab")).classList.add("active");
+      });
+    });
+
+    // --- 2. Filtro e Busca de Mods ---
+    const searchInput = document.getElementById("searchInput");
+    const emptyMsg = document.getElementById("emptyMsg");
+    const modCount = document.getElementById("modCount");
+    const pills = document.querySelectorAll("#filterPills .pill");
+    let currentFilter = "all";
+
+    function filterMods() {
+      const term = searchInput.value.toLowerCase().trim();
+      const modCards = document.querySelectorAll(".mod-card");
+      let visibleCount = 0;
+
+      modCards.forEach((card) => {
+        const text = card.innerText.toLowerCase();
+        const category = card.getAttribute("data-category");
+        const matchesSearch = text.includes(term);
+        const matchesCategory = currentFilter === "all" || category === currentFilter;
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = "flex";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      emptyMsg.style.display = visibleCount === 0 ? "block" : "none";
+      modCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'mod' : 'mods'}`;
+    }
+
+    searchInput.addEventListener("input", filterMods);
+    pills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        pills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        currentFilter = pill.getAttribute("data-filter");
+        filterMods();
+      });
+    });
+
+    filterMods();
+
+    // --- 3. Filtro e Busca da Lojinha Minecraft ---
+    const shopSearchInput = document.getElementById("shopSearchInput");
+    const productCards = document.querySelectorAll(".product-card");
+    const shopEmptyMsg = document.getElementById("shopEmptyMsg");
+    const shopCount = document.getElementById("shopCount");
+    const shopPills = document.querySelectorAll("#shopFilterPills .pill");
+    let currentShopFilter = "all";
+
+    function filterShop() {
+      const term = shopSearchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      productCards.forEach((card) => {
+        const text = card.innerText.toLowerCase();
+        const categories = card.getAttribute("data-shop-category");
+        const matchesSearch = text.includes(term);
+        const matchesCategory = currentShopFilter === "all" || categories.includes(currentShopFilter);
+
+        if (matchesSearch && matchesCategory) {
+          card.style.display = "flex";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      shopEmptyMsg.style.display = visibleCount === 0 ? "block" : "none";
+      shopCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'item' : 'itens'}`;
+    }
+
+    shopSearchInput.addEventListener("input", filterShop);
+    shopPills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        shopPills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        currentShopFilter = pill.getAttribute("data-shop-filter");
+        filterShop();
+      });
+    });
+
+    // --- 4. Fundo Interativo Minecraft ---
+    const canvas = document.getElementById("mcCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    let mouse = { x: -1000, y: -1000, targetX: 0, targetY: 0 };
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.targetX = (e.clientX / width - 0.5) * 30;
+      mouse.targetY = (e.clientY / height - 0.5) * 15;
+    });
+
+    window.addEventListener("mouseleave", () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    const particles = Array.from({ length: 42 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.floor(Math.random() * 4) + 3,
+      speedY: -(Math.random() * 0.35 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.25,
+      alpha: Math.random() * 0.5 + 0.15,
+      pulse: Math.random() * Math.PI * 2
+    }));
+
+    const terrainBlocks = [];
+    const blockSize = 36;
+    function buildTerrain() {
+      terrainBlocks.length = 0;
+      const cols = Math.ceil(width / blockSize) + 4;
+      for (let i = -2; i < cols; i++) {
+        const h1 = Math.floor(Math.sin(i * 0.35) * 2 + 3);
+        const h2 = Math.floor(Math.cos(i * 0.25) * 1.5 + 2);
+        terrainBlocks.push({ col: i, h1, h2 });
+      }
+    }
+    buildTerrain();
+    window.addEventListener("resize", buildTerrain);
+
+    let smoothX = 0, smoothY = 0;
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      const grad = ctx.createLinearGradient(0, 0, 0, height);
+      grad.addColorStop(0, "#020603");
+      grad.addColorStop(0.6, "#051209");
+      grad.addColorStop(1, "#091f10");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+
+      smoothX += (mouse.targetX - smoothX) * 0.05;
+      smoothY += (mouse.targetY - smoothY) * 0.05;
+
+      // Silhueta de blocos no horizonte
+      terrainBlocks.forEach(b => {
+        const x = b.col * blockSize + smoothX * 0.4;
+        const y = height - b.h1 * blockSize + smoothY * 0.3;
+        ctx.fillStyle = "rgba(0, 255, 102, 0.035)";
+        ctx.fillRect(x, y, blockSize - 2, b.h1 * blockSize + 40);
+        ctx.fillStyle = "rgba(0, 255, 102, 0.08)";
+        ctx.fillRect(x, y, blockSize - 2, 4);
+      });
+
+      // Partículas de XP flutuantes
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.pulse += 0.03;
+
+        if (p.y < -10) {
+          p.y = height + 10;
+          p.x = Math.random() * width;
+        }
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+
+        const glow = p.alpha * (0.7 + 0.3 * Math.sin(p.pulse));
+        ctx.fillStyle = `rgba(0, 255, 102, ${glow})`;
+        ctx.fillRect(p.x + smoothX * 0.8, p.y + smoothY * 0.8, p.size, p.size);
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 </body>
 </html>
