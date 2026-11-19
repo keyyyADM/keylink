@@ -59,16 +59,17 @@
     }
 
     .block-badge {
-      width: 68px;
-      height: 68px;
+      width: 72px;
+      height: 72px;
       margin: 0 auto 16px;
-      border-radius: 18px;
+      border-radius: 50%;
       background: var(--surface);
       border: 1px solid var(--border);
       backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s;
     }
@@ -76,6 +77,13 @@
     .block-badge:hover {
       transform: translateY(-3px) scale(1.04);
       border-color: var(--border-hover);
+    }
+
+    .block-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .block-badge svg {
@@ -552,7 +560,12 @@
   <div class="container">
     <header>
       <div class="block-badge" title="Keycraft">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <img
+          src="https://yt3.ggpht.com/PgxldB9DdWUJfxoNdWJiPIVn1NK4DdfJqaffPLMq224GW0h7v7it9hu17ft2b9cLD7jTDFF4=s600-c-k-c0x00ffffff-no-rj-rp-mo"
+          alt="Keycraft"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <svg style="display:none;" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
           <polygon points="32,8 56,21 32,34 8,21" fill="#33ff88" />
           <polygon points="8,21 32,34 32,56 8,43" fill="#2d1e14" />
           <polygon points="8,21 32,34 32,40 24,36 24,39 16,35 16,31 8,27" fill="#00cc55" />
