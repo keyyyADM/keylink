@@ -443,7 +443,7 @@
     .shop-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     .product-card {
@@ -464,38 +464,50 @@
       background: var(--surface-hover);
       border-color: var(--border-hover);
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0, 255, 102, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 255, 102, 0.12);
     }
 
     .product-thumb {
       width: 100%;
-      aspect-ratio: 16 / 10;
-      border-radius: 8px;
-      background: rgba(0, 255, 102, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      aspect-ratio: 1 / 1;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 10px;
       overflow: hidden;
-      color: var(--green);
     }
 
-    .product-thumb svg {
-      width: 28px;
-      height: 28px;
-      opacity: 0.85;
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+
+    .product-card:hover .product-thumb img {
+      transform: scale(1.04);
+    }
+
+    .badges-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
     }
 
     .store-badge {
       display: inline-block;
-      font-size: 0.65rem;
+      font-size: 0.64rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       padding: 3px 7px;
       border-radius: 5px;
-      margin-bottom: 6px;
       width: fit-content;
     }
 
@@ -505,24 +517,37 @@
       border: 1px solid rgba(238, 77, 45, 0.3);
     }
 
-    .badge-amazon {
-      background: rgba(255, 153, 0, 0.16);
-      color: #ffb340;
-      border: 1px solid rgba(255, 153, 0, 0.3);
+    .badge-promo {
+      background: rgba(0, 255, 102, 0.14);
+      color: var(--green);
+      border: 1px solid rgba(0, 255, 102, 0.35);
     }
 
     .product-card h3 {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       line-height: 1.3;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
 
-    .product-card p {
-      font-size: 0.75rem;
-      color: var(--muted);
-      line-height: 1.35;
+    .price-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
       margin-bottom: 12px;
+    }
+
+    .price-old {
+      font-size: 0.73rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .price-now {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: -0.02em;
     }
 
     .product-cta {
@@ -660,7 +685,7 @@
       <div class="empty-msg" id="emptyMsg">Nenhum mod encontrado.</div>
     </div>
 
-    <!-- ABA 2: LOJINHA MINECRAFT (AFILIADOS SHOPEE/AMAZON) -->
+    <!-- ABA 2: LOJINHA MINECRAFT (AFILIADOS SHOPEE) -->
     <div id="shopTab" class="tab-panel">
       <div class="controls">
         <div class="search-box">
@@ -668,30 +693,32 @@
         </div>
         <div class="filter-pills" id="shopFilterPills">
           <button class="pill active" data-shop-filter="all">Todos</button>
-          <button class="pill" data-shop-filter="shopee">Shopee</button>
-          <button class="pill" data-shop-filter="amazon">Amazon</button>
-          <button class="pill" data-shop-filter="setup">Setup & Gamer</button>
+          <button class="pill" data-shop-filter="mouse">Mouse</button>
+          <button class="pill" data-shop-filter="teclado">Teclado</button>
+          <button class="pill" data-shop-filter="promoção">Promoção</button>
         </div>
       </div>
 
       <div class="section-header">
-        <div class="section-title">Achadinhos & Setup Gamer</div>
-        <div class="mod-count" id="shopCount">4 itens</div>
+        <div class="section-title">Ofertas em Destaque</div>
+        <div class="mod-count" id="shopCount">2 itens</div>
       </div>
 
       <div class="shop-grid" id="shopGrid">
-        <a href="https://shopee.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="shopee setup">
+        <a href="https://s.shopee.com.br/4qHKUzvbEd" target="_blank" rel="noopener" class="product-card" data-shop-category="mouse promoção">
           <div>
             <div class="product-thumb">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
+              <img src="https://down-bs-br.img.susercontent.com/sg-11134201-825ae-mu141y92ew3ue8.webp" alt="Mouse Gamer" loading="lazy" />
             </div>
-            <span class="store-badge badge-shopee">Shopee</span>
-            <h3>Mouse Gamer Leve</h3>
-            <p>Ideal para PvP, construção rápida e edições precisas.</p>
+            <div class="badges-row">
+              <span class="store-badge badge-shopee">Shopee</span>
+              <span class="store-badge badge-promo">Promoção</span>
+            </div>
+            <h3>Mouse Gamer</h3>
+            <div class="price-box">
+              <span class="price-old">R$ 219,99</span>
+              <span class="price-now">R$ 159,99</span>
+            </div>
           </div>
           <div class="product-cta">
             <span>Ver oferta</span>
@@ -699,54 +726,20 @@
           </div>
         </a>
 
-        <a href="https://shopee.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="shopee setup">
+        <a href="https://s.shopee.com.br/4VeU6Q4zsb" target="_blank" rel="noopener" class="product-card" data-shop-category="teclado promoção">
           <div>
             <div class="product-thumb">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="6" width="20" height="12" rx="2"/>
-                <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
-              </svg>
+              <img src="https://down-bs-br.img.susercontent.com/sg-11134201-822x4-mod770yc9q177d.webp" alt="Teclado Mecânico" loading="lazy" />
             </div>
-            <span class="store-badge badge-shopee">Shopee</span>
-            <h3>Teclado Mecânico 60%</h3>
-            <p>Compacto com switches silenciosos e RGB verde.</p>
-          </div>
-          <div class="product-cta">
-            <span>Ver oferta</span>
-            <span>↗</span>
-          </div>
-        </a>
-
-        <a href="https://www.amazon.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="amazon setup">
-          <div>
-            <div class="product-thumb">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                <line x1="12" y1="19" x2="12" y2="23"/>
-                <line x1="8" y1="23" x2="16" y2="23"/>
-              </svg>
+            <div class="badges-row">
+              <span class="store-badge badge-shopee">Shopee</span>
+              <span class="store-badge badge-promo">Promoção</span>
             </div>
-            <span class="store-badge badge-amazon">Amazon</span>
-            <h3>Microfone Condensador</h3>
-            <p>Áudio limpo para gravar vídeos e lives sem ruído.</p>
-          </div>
-          <div class="product-cta">
-            <span>Ver oferta</span>
-            <span>↗</span>
-          </div>
-        </a>
-
-        <a href="https://shopee.com.br" target="_blank" rel="noopener" class="product-card" data-shop-category="shopee">
-          <div>
-            <div class="product-thumb">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              </svg>
+            <h3>Teclado Mecânico</h3>
+            <div class="price-box">
+              <span class="price-old">R$ 211,99</span>
+              <span class="price-now">R$ 149,99</span>
             </div>
-            <span class="store-badge badge-shopee">Shopee</span>
-            <h3>Luminária Bloco Minecraft</h3>
-            <p>Decoração temática para deixar o cenário idêntico ao jogo.</p>
           </div>
           <div class="product-cta">
             <span>Ver oferta</span>
